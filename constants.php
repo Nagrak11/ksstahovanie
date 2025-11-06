@@ -1,127 +1,137 @@
 <?php
+/**
+ * Configuration file for K&S Stahovanie website
+ * All site constants and content data
+ */
+
+// Prevent direct access
+if (!defined('SITE_ACCESS')) {
+    die('Direct access not permitted');
+}
+
 // Company Information
-define('COMPANY_NAME', 'K&` seahovanie autodoprava s.r.o.');
+define('COMPANY_NAME', 'K&S stahovanie autodoprava s.r.o.');
 define('COMPANY_PHONE', '+421 905 123 456');
-define('COMPANY_EMAIL', 'info@ksstahovannie.sk');
-define('COMPANY_ADDRESS', 'Humenné, Slovakia');
+define('COMPANY_EMAIL', 'info@ksstahovanie.sk');
+define('COMPANY_ADDRESS', 'Humenne, Slovakia');
 
 // Site Configuration
-define('SITE_TITLE', 'K&` seahovanie - Profesionálne seahovacie slu~by v Humenné');
-define('SITE_DESCRIPTION', 'Profesionálne seahovacie a autodopravné slu~by v Humenné a okolí. Rýchlo, bezpene a spo>ahlivo.');
-define('SITE_KEYWORDS', 'seahovanie, autodoprava, Humenné, Slovakia, preprava, seahovacie slu~by');
+define('SITE_TITLE', 'K&S stahovanie - Profesionalne stahovacie sluzby v Humenne');
+define('SITE_DESCRIPTION', 'Profesionalne stahovacie a autodopravne sluzby v Humenne a okoli. Rychlo, bezpecne a spolahlivo.');
+define('SITE_KEYWORDS', 'stahovanie, autodoprava, Humenne, Slovakia, preprava, stahovacie sluzby');
 
-// Social Media
-define('FACEBOOK_URL', '#');
-define('INSTAGRAM_URL', '#');
+// Social Media (Update with actual URLs)
+define('FACEBOOK_URL', 'https://www.facebook.com');
+define('INSTAGRAM_URL', 'https://www.instagram.com');
 
 // Hero Slider Images
 $hero_slides = [
     [
-        'image' => 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&h=1080&fit=crop',
-        'title' => 'Profesionálne seahovacie slu~by',
-        'subtitle' => 'Rýchlo, bezpene a spo>ahlivo'
+        'image' => 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&h=1080&fit=crop&q=80',
+        'title' => 'Profesionalne stahovacie sluzby',
+        'subtitle' => 'Rychlo, bezpecne a spolahlivo'
     ],
     [
-        'image' => 'https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=1920&h=1080&fit=crop',
-        'title' => 'Autodoprava po celej Európe',
-        'subtitle' => 'Prepravíme vaetko, o potrebujete'
+        'image' => 'https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=1920&h=1080&fit=crop&q=80',
+        'title' => 'Autodoprava po celej Europe',
+        'subtitle' => 'Prepravime vsetko, co potrebujete'
     ],
     [
-        'image' => 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&h=1080&fit=crop',
-        'title' => 'Skúsený tím profesionálov',
-        'subtitle' => 'Vaae veci sú v bezpeí'
+        'image' => 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&h=1080&fit=crop&q=80',
+        'title' => 'Skuseny tim profesionalov',
+        'subtitle' => 'Vase veci su v bezpeci'
     ]
 ];
 
 // Services
 $services = [
     [
-        'icon' => '=š',
-        'title' => 'Seahovanie bytov a domov',
-        'description' => 'Komplexné seahovacie slu~by pre domácnosti akejko>vek ve>kosti. Postaráme sa o vaetko od balenia a~ po inataláciu.'
+        'icon' => '&#128666;',
+        'title' => 'Stahovanie bytov a domov',
+        'description' => 'Komplexne stahovacie sluzby pre domacnosti akejkolvek velkosti. Postarame sa o vsetko od balenia az po instalaciu.'
     ],
     [
-        'icon' => '<â',
-        'title' => 'Firemné seahovanie',
-        'description' => 'Profesionálne seahovanie kancelárií a firiem s minimálnym prestojom váaho podnikania.'
+        'icon' => '&#127970;',
+        'title' => 'Firemne stahovanie',
+        'description' => 'Profesionalne stahovanie kancelarii a firiem s minimalnym prestojom vasho podnikania.'
     ],
     [
-        'icon' => '=æ',
+        'icon' => '&#128230;',
         'title' => 'Balenie a ochrana',
-        'description' => 'Kvalitné balenie vaaich cenných predmetov pomocou profesionálnych obalových materiálov.'
+        'description' => 'Kvalitne balenie vasich cennych predmetov pomocou profesionalnych obalovych materialov.'
     ],
     [
-        'icon' => '=›',
-        'title' => 'Medzinárodná preprava',
-        'description' => 'Autodoprava po celej Európe. Rýchla a bezpená preprava váaho tovaru.'
+        'icon' => '&#128667;',
+        'title' => 'Medzinarodna preprava',
+        'description' => 'Autodoprava po celej Europe. Rychla a bezpecna preprava vasho tovaru.'
     ],
     [
-        'icon' => '='',
-        'title' => 'Montá~ a demontá~',
-        'description' => 'Odborná demontá~ a montá~ nábytku priamo na mieste.'
+        'icon' => '&#128295;',
+        'title' => 'Montaz a demontaz',
+        'description' => 'Odborna demontaz a montaz nabytku priamo na mieste.'
     ],
     [
-        'icon' => '=æ',
+        'icon' => '&#128230;',
         'title' => 'Uskladnenie',
-        'description' => 'Bezpené uskladnenie váaho majetku v naaich strá~ených skladoch.'
+        'description' => 'Bezpecne uskladnenie vasho majetku v nasich strazenych skladoch.'
     ]
 ];
 
 // Gallery Images
 $gallery_images = [
     [
-        'url' => 'https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=640&h=480&fit=crop',
-        'alt' => 'Seahovací kamión',
-        'caption' => 'Moderná flotila vozidiel'
+        'url' => 'https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=640&h=480&fit=crop&q=80',
+        'alt' => 'Stahovaci kamion',
+        'caption' => 'Moderna flotila vozidiel'
     ],
     [
-        'url' => 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=480&fit=crop',
-        'alt' => 'Tím pracovníkov',
-        'caption' => 'Profesionálny tím'
+        'url' => 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=480&fit=crop&q=80',
+        'alt' => 'Tim pracovnikov',
+        'caption' => 'Profesionalny tim'
     ],
     [
-        'url' => 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=640&h=480&fit=crop',
-        'alt' => 'Balenie vecí',
-        'caption' => 'Bezpené balenie'
+        'url' => 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=640&h=480&fit=crop&q=80',
+        'alt' => 'Balenie veci',
+        'caption' => 'Bezpecne balenie'
     ],
     [
-        'url' => 'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=640&h=480&fit=crop',
-        'alt' => 'Krabice pripravené na presun',
-        'caption' => 'Organizované seahovanie'
+        'url' => 'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=640&h=480&fit=crop&q=80',
+        'alt' => 'Krabice pripravene na presun',
+        'caption' => 'Organizovane stahovanie'
     ],
     [
-        'url' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=640&h=480&fit=crop',
-        'alt' => 'Nakladanie nábytku',
-        'caption' => 'Opatrné zaobchádzanie'
+        'url' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=640&h=480&fit=crop&q=80',
+        'alt' => 'Nakladanie nabytku',
+        'caption' => 'Opatarne zaobchadzanie'
     ],
     [
-        'url' => 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=640&h=480&fit=crop',
+        'url' => 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=640&h=480&fit=crop&q=80',
         'alt' => 'Uskladnenie',
-        'caption' => 'Bezpené uskladnenie'
+        'caption' => 'Bezpecne uskladnenie'
     ]
 ];
 
 // Reviews
 $reviews = [
     [
-        'name' => 'Ján Ková',
+        'name' => 'Jan Kovac',
         'rating' => 5,
-        'text' => 'Perfektná slu~ba! Chlapci boli rýchli, profesionálni a ve>mi oh>aduplní k náamu majetku. Odporúam ka~dému!'
+        'text' => 'Perfektna sluzba! Chlapci boli rychli, profesionalni a velmi ohladuplni k nasmu majetku. Odporucam kazdemu!'
     ],
     [
-        'name' => 'Mária Nováková',
+        'name' => 'Maria Novakova',
         'rating' => 5,
-        'text' => 'Seahovali sme sa s celou rodinou a bolo to bez stresu. Vaetko prebehlo hladko a v dohodnutom ase.'
+        'text' => 'Stahovali sme sa s celou rodinou a bolo to bez stresu. Vsetko prebehlo hladko a v dohodnutom case.'
     ],
     [
         'name' => 'Peter Varga',
         'rating' => 5,
-        'text' => 'Výborná firma! Seahovali nám kanceláriu a absolútne bez problémov. Profesionálny prístup.'
+        'text' => 'Vyborna firma! Stahovali nam kancelariu a absolutne bez problemov. Profesionalny pristup.'
     ],
     [
-        'name' => 'Eva Horváthová',
+        'name' => 'Eva Horvathova',
         'rating' => 5,
-        'text' => 'Ve>mi spokojná so slu~bami. Chlapci boli milí a aikovní. Cena zodpovedala kvalite.'
+        'text' => 'Velmi spokojna so sluzbami. Chlapci boli mili a sikovni. Cena zodpovedala kvalite.'
     ]
 ];
 ?>
