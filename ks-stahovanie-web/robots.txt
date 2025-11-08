@@ -1,0 +1,12 @@
+# robots.txt for K&Š Sťahovanie
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.ksstahovanie.sk/sitemap.xml
+
+# Disallow crawling of certain directories (optional)
+# Disallow: /includes/
+# Disallow: /assets/fonts/

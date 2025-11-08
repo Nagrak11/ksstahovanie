@@ -1,0 +1,112 @@
+================================================================================
+K&Š SŤAHOVANIE - IMAGES DIRECTORY INFORMATION
+================================================================================
+
+This directory structure contains placeholders for all images used on the website.
+Replace the placeholder images with your actual company photos.
+
+================================================================================
+DIRECTORY STRUCTURE
+================================================================================
+
+assets/images/
+├── logo.png                    (Company logo - 180x60px recommended)
+├── slider/                     (Hero slider images - 1920x600px recommended)
+│   ├── slide1.jpg
+│   ├── slide2.jpg
+│   ├── slide3.jpg
+│   └── slide4.jpg
+├── vozidla/                    (Vehicle photos - 800x600px recommended)
+│   ├── cervena-1.jpg
+│   ├── cervena-2.jpg
+│   └── biela-kontajner.jpg
+└── prace/                      (Gallery/work photos - 800x600px recommended)
+    ├── zima-nakladanie.jpg
+    ├── dodavka-nalozena.jpg
+    ├── schody-panel.jpg
+    ├── cervena-naklad.jpg
+    ├── nalozene-2.jpg
+    ├── montaz-nabytku.jpg
+    ├── okno-schody.jpg
+    └── interier-nabytok.jpg
+
+================================================================================
+IMAGE REQUIREMENTS
+================================================================================
+
+LOGO (logo.png):
+- Recommended size: 180x60px
+- Format: PNG with transparent background preferred
+- Should be clear and readable at small sizes
+
+SLIDER IMAGES (slider/*.jpg):
+- Recommended size: 1920x600px (minimum 1200x400px)
+- Format: JPG, optimized for web
+- Should show: moving trucks, workers in action, satisfied customers
+- High quality but compressed (target: <200KB per image)
+
+VEHICLE PHOTOS (vozidla/*.jpg):
+- Recommended size: 800x600px
+- Format: JPG
+- Show your actual moving trucks/vans
+- Clean, professional photos
+
+GALLERY PHOTOS (prace/*.jpg):
+- Recommended size: 800x600px
+- Format: JPG
+- Show real work: loading, carrying furniture, packed items
+- Each should demonstrate professionalism and care
+
+================================================================================
+IMAGE OPTIMIZATION TIPS
+================================================================================
+
+1. Compress all images before uploading
+   - Use tools like TinyPNG, ImageOptim, or Squoosh
+   - Target: 70-80% quality for JPG
+
+2. Use descriptive filenames with keywords
+   - Good: stahovanie-humenne-dodavka.jpg
+   - Bad: IMG_1234.jpg
+
+3. Include keywords in alt text (already done in the code)
+
+4. Responsive images:
+   - The website uses srcset for responsive images
+   - Provide 1x and 2x versions if possible
+
+================================================================================
+HOW TO REPLACE PLACEHOLDER IMAGES
+================================================================================
+
+1. Prepare your images according to the specs above
+2. Name them exactly as shown in the directory structure
+3. Upload to the respective folders
+4. No code changes needed - images will automatically display
+
+================================================================================
+CREATING PLACEHOLDER IMAGES (TEMPORARY SOLUTION)
+================================================================================
+
+If you don't have images yet, you can use free placeholder services:
+
+Logo:
+- Create a simple logo at Canva.com or use a text-based logo temporarily
+
+Stock Photos:
+- Unsplash.com (search: "moving truck", "movers", "furniture moving")
+- Pexels.com (search similar keywords)
+- Pixabay.com
+
+Make sure to replace stock photos with your actual company photos as soon as possible!
+
+================================================================================
+NOTES
+================================================================================
+
+- All images should be properly licensed (your own photos or royalty-free)
+- Images are lazy-loaded for better performance
+- The website will work without images, but they significantly improve trust
+- Consider hiring a photographer for professional photos of your team and trucks
+
+================================================================================
