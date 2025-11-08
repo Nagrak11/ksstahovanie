@@ -129,6 +129,45 @@
             }
         });
 
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        heroSlider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+            clearInterval(sliderInterval);
+        }, { passive: true });
+
+        heroSlider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeX = touchEndX - touchStartX;
+            const swipeY = Math.abs(touchEndY - touchStartY);
+
+            // Only trigger swipe if horizontal movement is greater than vertical
+            if (swipeY < 100) {
+                if (swipeX > swipeThreshold) {
+                    // Swipe right - show previous slide
+                    prevSlide();
+                    resetInterval();
+                } else if (swipeX < -swipeThreshold) {
+                    // Swipe left - show next slide
+                    nextSlide();
+                    resetInterval();
+                }
+            } else {
+                startInterval();
+            }
+        }
+
         // Start autoplay
         startInterval();
     }
@@ -219,6 +258,34 @@
                 showNextImage();
             }
         });
+
+        // Touch/Swipe support for lightbox
+        let lightboxTouchStartX = 0;
+        let lightboxTouchEndX = 0;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            lightboxTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            lightboxTouchEndX = e.changedTouches[0].screenX;
+            handleLightboxSwipe();
+        }, { passive: true });
+
+        function handleLightboxSwipe() {
+            const swipeThreshold = 50;
+            const swipeX = lightboxTouchEndX - lightboxTouchStartX;
+
+            if (swipeX > swipeThreshold) {
+                // Swipe right - show previous image
+                showPrevImage();
+            } else if (swipeX < -swipeThreshold) {
+                // Swipe left - show next image
+                showNextImage();
+            }
+        }
     }
 
     // ========================================

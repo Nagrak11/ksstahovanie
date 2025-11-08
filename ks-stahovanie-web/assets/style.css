@@ -64,6 +64,9 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    /* Prevent iOS text size adjust after orientation change */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -74,6 +77,10 @@ body {
     background-color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Improve touch scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: contain;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -156,8 +163,10 @@ ul, ol {
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-xs);
     padding: 0.75rem 1.5rem;
+    min-height: 44px; /* iOS recommended touch target */
     font-size: 1rem;
     font-weight: 500;
     border-radius: var(--radius-lg);
@@ -166,6 +175,11 @@ ul, ol {
     transition: var(--transition);
     text-decoration: none;
     font-family: var(--font-primary);
+    /* Better touch interaction */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .btn-primary {
@@ -1545,6 +1559,59 @@ ul, ol {
    RESPONSIVE DESIGN
    ======================================== */
 
+/* ========================================
+   TABLET OPTIMIZATION (768px - 1023px)
+   ======================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet-specific grid adjustments */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Tablet typography */
+    .slide-title {
+        font-size: 2.25rem;
+    }
+
+    .page-title {
+        font-size: 2.25rem;
+    }
+
+    /* Tablet spacing */
+    .container {
+        padding: 0 2rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+}
+
+/* ========================================
+   DESKTOP & LARGER TABLETS (768px+)
+   ======================================== */
+
 @media (min-width: 768px) {
     .contact-hero-content {
         grid-template-columns: 1fr 1fr;
@@ -1553,12 +1620,29 @@ ul, ol {
     .floating-call-btn {
         display: none !important;
     }
+
+    /* Better hover states on desktop */
+    .service-card:hover,
+    .review-card:hover,
+    .fleet-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .gallery-item:hover .gallery-img {
+        transform: scale(1.15);
+    }
 }
 
 @media (max-width: 767px) {
-    /* Mobile Navigation */
+    /* ========================================
+       MOBILE NAVIGATION
+       ======================================== */
+
     .nav-toggle {
         display: flex;
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .nav-menu {
@@ -1571,102 +1655,407 @@ ul, ol {
         padding: var(--spacing-md);
         box-shadow: var(--shadow-lg);
         display: none;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 999;
     }
 
     .nav-menu.active {
         display: flex;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-item {
+        border-bottom: 1px solid var(--gray-100);
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        min-height: 44px;
+        font-size: 1.0625rem;
     }
 
     .nav-cta {
         display: none;
     }
 
-    /* Show floating call button on mobile */
+    /* ========================================
+       MOBILE FLOATING BUTTON
+       ======================================== */
+
     .floating-call-btn {
         display: flex;
+        animation: pulse 2s infinite;
+        /* Safe zone for iPhone notch */
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        right: calc(20px + env(safe-area-inset-right));
     }
 
-    /* Hero Slider */
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(255, 145, 0, 0.7);
+        }
+        50% {
+            box-shadow: 0 0 0 15px rgba(255, 145, 0, 0);
+        }
+    }
+
+    /* ========================================
+       MOBILE HERO SLIDER
+       ======================================== */
+
     .hero-slider {
         height: 500px;
+        /* Account for mobile browser UI */
+        min-height: 400px;
     }
 
     .slide-title {
-        font-size: 1.75rem;
+        font-size: 1.625rem;
+        line-height: 1.3;
+        padding: 0 1rem;
     }
 
     .slide-subtitle {
-        font-size: 1rem;
+        font-size: 0.9375rem;
+        padding: 0 1rem;
     }
 
     .slider-control {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
+        /* Better touch target */
     }
 
     .slider-control.prev {
-        left: 10px;
+        left: 8px;
     }
 
     .slider-control.next {
-        right: 10px;
+        right: 8px;
     }
 
-    /* Page Header */
+    .slider-indicators {
+        bottom: 15px;
+    }
+
+    .slide-cta {
+        padding: 0 1rem;
+    }
+
+    /* ========================================
+       MOBILE TYPOGRAPHY
+       ======================================== */
+
     .page-title {
         font-size: 1.75rem;
+        line-height: 1.25;
     }
 
-    /* CTA Sections */
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.625rem;
+        line-height: 1.3;
+    }
+
     .cta-title {
         font-size: 1.5rem;
+        line-height: 1.3;
     }
 
     .cta-text {
+        font-size: 0.9375rem;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+        line-height: 1.25;
+    }
+    h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+    h3 {
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    /* ========================================
+       MOBILE BUTTONS & TOUCH TARGETS
+       ======================================== */
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.875rem 1.5rem;
         font-size: 1rem;
     }
 
-    /* Buttons */
-    .btn-xl {
+    .btn-lg {
         padding: 1rem 1.5rem;
-        font-size: 1rem;
+        font-size: 1.0625rem;
+    }
+
+    .btn-xl {
+        padding: 1.125rem 1.5rem;
+        font-size: 1.0625rem;
     }
 
     .btn-phone-large {
         width: 100%;
-        justify-content: center;
+        padding: 1.25rem 1.5rem;
     }
 
-    /* Typography */
-    h1 { font-size: 1.875rem; }
-    h2 { font-size: 1.5rem; }
-    h3 { font-size: 1.25rem; }
+    .phone-large-number {
+        font-size: 1.375rem;
+    }
 
-    /* Spacing */
+    /* ========================================
+       MOBILE SPACING
+       ======================================== */
+
+    .container {
+        padding: 0 1rem;
+    }
+
     .section {
-        padding: var(--spacing-xl) 0;
+        padding: 2.5rem 0;
     }
 
-    /* Grids */
+    .section-cta {
+        margin-top: 2rem;
+    }
+
+    /* ========================================
+       MOBILE GRIDS
+       ======================================== */
+
     .services-grid,
     .trust-grid,
     .reviews-grid,
-    .gallery-grid,
     .fleet-grid,
     .process-grid,
     .why-grid,
-    .areas-grid {
+    .areas-grid,
+    .faq-grid,
+    .additional-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 
-    /* Stats */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* ========================================
+       MOBILE CARDS
+       ======================================== */
+
+    .service-card,
+    .review-card,
+    .fleet-card,
+    .area-card,
+    .faq-item,
+    .additional-card {
+        padding: 1.25rem;
+    }
+
+    .service-block {
+        padding: 1.5rem;
+    }
+
+    .service-block-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* ========================================
+       MOBILE CONTACT PAGE
+       ======================================== */
+
+    .contact-hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info-card {
+        padding: 1.25rem;
+    }
+
+    /* ========================================
+       MOBILE REVIEWS
+       ======================================== */
+
     .stats-wrapper {
         flex-direction: column;
+        align-items: stretch;
     }
 
-    /* Footer */
+    .stats-main {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .stats-bars {
+        padding-top: 1.5rem;
+        min-width: auto;
+    }
+
+    /* ========================================
+       MOBILE FOOTER
+       ======================================== */
+
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-trust {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* ========================================
+       MOBILE GALLERY & LIGHTBOX
+       ======================================== */
+
+    .lightbox-img {
+        max-height: 70vh;
+    }
+
+    .lightbox-nav {
+        width: 44px;
+        height: 44px;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 44px;
+        height: 44px;
+    }
+
+    /* ========================================
+       MOBILE TOP BAR
+       ======================================== */
+
+    .top-bar {
+        font-size: 0.8125rem;
+    }
+
+    .top-bar-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .top-bar-text {
+        font-size: 0.8125rem;
+    }
+
+    /* ========================================
+       MOBILE TABLES & CONTENT
+       ======================================== */
+
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ========================================
+       MOBILE FORMS (if added later)
+       ======================================== */
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        font-size: 16px; /* Prevent zoom on iOS */
+        min-height: 44px;
+    }
+
+    /* ========================================
+       MOBILE MAP
+       ======================================== */
+
+    .map-iframe,
+    .google-map {
+        height: 350px;
+    }
+
+    /* ========================================
+       MOBILE PROCESS SECTION
+       ======================================== */
+
+    .process-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    /* ========================================
+       MOBILE SERVICE BLOCKS
+       ======================================== */
+
+    .service-block-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* ========================================
+       MOBILE IMPROVEMENTS
+       ======================================== */
+
+    /* Better link tap areas */
+    a {
+        min-height: 24px;
+        display: inline-block;
+    }
+
+    /* Better list spacing */
+    .service-list li,
+    .area-services li {
+        padding: 0.5rem 0 0.5rem 1.5rem;
+    }
+
+    /* Improve touch scroll performance */
+    .gallery-grid,
+    .reviews-grid,
+    .services-grid {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
     }
 }
 
